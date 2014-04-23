@@ -1,0 +1,122 @@
+.sasha{
+  width: 100%;
+  float: left;
+  }
+
+.p {
+  padding-top:10px;
+  color: #ffffff;
+}
+.p a{
+  padding-top:10px;
+  color: #fdfffd;
+}
+.p a:active{
+  padding-top:10px;
+  color: #fdfffd;
+}
+
+body{
+  background: url(asset-path('bg.png',image)) repeat;
+  font-family: Calibri,Verdana,Helvetica,Arial;
+}
+.pad{
+display: inline;
+}
+.toolbar{
+
+  background: -moz-linear-gradient(center top , #333333, #111111) repeat scroll 0 0 transparent;
+  color: white;
+  font-size: 15px;
+  height: 40px;
+}
+.tbl{
+  height: 50px;
+  width: 100%;
+}
+.right{
+  float: right;
+}
+.c{
+ text-align: center;
+}
+.cs{
+ text-align: center;
+ padding-top: 200px;
+}
+.post{
+  .post_content{
+    margin-left: 120px;
+  }
+
+  .name{
+    font-size: 25px;
+  }
+  .time{
+    float: right;
+    color: white;
+    background: black;
+    display: inline;
+  }
+  .clear{
+    clear: both;
+  }
+  .body{
+    border: 1px solid #000;
+    background: rgba(255, 255, 255, 0.5);
+  }
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px 0;
+  background: #fff;
+}
+
+.gr{
+  width: 100%;
+  border: 1px solid #fff;
+  margin: 5px;
+  background: #DAF1DB;
+}
+
+.tb {
+  width:25%;
+  background-color: #d9d9d9;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+
+
+}
+.tb th{
+  text-align: center;
+
+}
+.tb td{
+  text-align: center;
+
+}
+
+.bb {
+  display: inline;
+  font-size: 20px;
+}
+.rr{
+  display:block;
+}
+
+.ppp{
+  float:left;
+}
+
+.pp{
+  width:35%;
+  height:auto;
+  overflow: auto;
+  background-color: #d9d9d9;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  float:left;
+}
+
+.e{
+  margin-top: 200px;
+}

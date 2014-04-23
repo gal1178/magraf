@@ -1,0 +1,18 @@
+%table{:class => "table table-striped"}
+  %thead
+    %tr
+      -%w(Номер Почта Имя Действия Роль).each do |attr|
+        %th=User.human_attribute_name(attr)
+  %tbody
+    -@users.each do |user|
+      %tr
+        %td=user.id
+        %td=user.email
+        %td=user.username
+        %td
+          = link_to 'Редактировать', edit_user_path(user), :class => 'btn btn-primary'
+          = link_to 'Удалить', user, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger'
+        %td
+          =user.human_role
+          .hide.data_num=user.role
+= link_to 'Новый пользователь', new_user_path, :class => 'btn'

@@ -1,0 +1,16 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .navbar-inner
+    .container
+      .nav-collapse.collapse
+        %ul.nav
+          -if logged_in?
+            -menu_items.each do |item|
+              %li{class: controller_name==item[:name] ? 'active' : nil}=link_to item[:title],url_for(:controller=>item[:name])
+        .pull-right
+          %ul.nav
+            .p
+              -if logged_in?
+                Пользователь:
+                =current_user.username
+                \|
+                //= link_to "Выход", destroy_user_session_path

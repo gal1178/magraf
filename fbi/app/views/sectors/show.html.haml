@@ -1,0 +1,8 @@
+%p
+  %b Название файла:
+  = @sector.file_name
+%p
+  %b содержимое файла:
+  = @sector.data
+
+= link_to 'Назад', :back, :class => 'btn'

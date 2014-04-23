@@ -1,0 +1,17 @@
+%h1 Listing correlations
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @correlations.each do |correlation|
+    %tr
+      %td= link_to 'Show', correlation
+      %td= link_to 'Edit', edit_correlation_path(correlation)
+      %td= link_to 'Destroy', correlation, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Correlation', new_correlation_path

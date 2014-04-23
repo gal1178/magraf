@@ -1,0 +1,14 @@
+= form_for @examination do |f|
+  -if @examination.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@examination.errors.count, "error")} prohibited this patient from being saved:"
+      %ul
+        - @examination.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    Комментарий
+    %p
+    = f.text_field :comment
+  .actions
+    = f.submit 'Сохранить'

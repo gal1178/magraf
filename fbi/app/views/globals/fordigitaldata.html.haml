@@ -1,0 +1,50 @@
+- g_dir=@globals.select{|x| x.file_name == "g_dir"}[0].data
+- g_dir=g_dir.sub("#{g_dir[0..18]}","").sub(" \r\n","").split("\t")
+- g_glb=@globals.select{|x| x.file_name == "g_glb"}[0].data
+- g_glb=g_glb.sub("#{g_glb[0..18]}","").sub(" \r\n","").split("\t")
+- global=@globals.select{|x| x.file_name == "Global31x31"}[0].data
+- global=global.sub("#{global[0..18]}","").sub(" \r\n","").split("\t")
+- g_step=@globals.select{|x| x.file_name == "g_step"}[0].data
+- g_step=g_step.sub("#{g_step[0..18]}","").sub(" \r\n","").split("\t")
+- steppoints=@globals.select{|x| x.file_name == "StepPoints"}[0].data
+- steppoints=steppoints.sub("#{steppoints[0..16]}","").sub(" \r\n","").split("\t")
+%h4 Таблица данных обследования:
+%table{:class => "table table-bordered"}
+  %tr
+    %th g_dir: &nbsp
+    -for i in 0...g_dir.size
+      %td
+        =g_dir[i]
+        &nbsp
+    %tr
+    %th g_glb: &nbsp
+    -for i in 0...g_glb.size
+      %td
+        =g_glb[i]
+        &nbsp
+    %tr
+    %th global: &nbsp
+    -for i in 0...global.size
+      %td
+        =global[i]
+        &nbsp
+    %tr
+    %th g_step: &nbsp
+    -for i in 0...g_step.size
+      %td
+        =g_step[i]
+        &nbsp
+    %tr
+    %th steppoints: &nbsp
+    -for i in 0...steppoints.size
+      %td
+        =steppoints[i]
+        &nbsp
+
+%table
+  %tr
+    %th Рисунки
+    %td
+      = link_to image_tag(img1_global_path(@globals[0]), :size => "400x200", :alt => 'qq'), img1_global_path(@globals[0]), :class => 'btn'
+      = link_to image_tag(img2_global_path(@globals[0]), :size => "400x200", :alt => 'qq'), img2_global_path(@globals[0]), :class => 'btn'
+= link_to 'Назад', DigitalDatum.find(@globals[0].digital_datum_id).examination, :class => 'btn'

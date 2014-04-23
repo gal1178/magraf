@@ -1,0 +1,88 @@
+-temp=0
+-integraldiv=[]
+-integralmap=[]
+-integralmaprat=[]
+-unregularint=[]
+-intstt=@integrals.select{|x| x.file_name == "IntSTT"}[0].data
+-intstt=intstt.sub("#{intstt[0..13]}","").split("\t")
+-intqrs=@integrals.select{|x| x.file_name == "IntQRS"}[0].data
+-intqrs=intqrs.sub("#{intqrs[0..13]}","").split("\t")
+-integralpattern=@integrals.select{|x| x.file_name == "IntegralPattern"}[0].data
+-integralpattern=integralpattern.sub("#{integralpattern[0..19]}","").split("\t")
+-integralmap[0]=@integrals.select{|x| x.file_name == "IntegralMap"}[0].data
+-integralmap[0]=integralmap[0].sub("#{integralmap[0][0..19]}","").split("\t")
+-integralmaprat[0]=@integrals.select{|x| x.file_name == "IntegralMapRat"}[0].data
+-integralmaprat[0]=integralmaprat[0].sub("#{integralmaprat[0][0..19]}","").split("\t")
+-for i in 1..5
+  - integraldiv[i]=@integrals.select{|x| x.file_name == "IntegralDiv#{i}"}[0].data
+  - integraldiv[i]=integraldiv[i].sub("#{integraldiv[i][0..19]}","").split("\t")
+-for i in 1..6
+  -integralmap[i]=@integrals.select{|x| x.file_name == "IntegralMap#{i}"}[0].data
+  -integralmap[i]=integralmap[i].sub("#{integralmap[i][0..19]}","").split("\t")
+  -integralmaprat[i]=@integrals.select{|x| x.file_name == "IntegralMapRat#{i}"}[0].data
+  -integralmaprat[i]=integralmaprat[i].sub("#{integralmaprat[i][0..19]}","").split("\t")
+  -unregularint[i]=@integrals.select{|x| x.file_name == "UnregularInt#{i}"}[0].data
+  -unregularint[i]=unregularint[i].sub("#{unregularint[i][0..19]}","").split("\t")
+
+%h4 Таблица данных обследования:
+%table{:class => "table table-bordered"}
+  %tr
+    %th{:colspan => "9", :align => "center"} IntegralDiv
+    -for i in 1...integraldiv.size
+      %tr
+      -for j in 0...integraldiv[i].size
+        %td
+          =integraldiv[i][j]
+          &nbsp
+%table{:class => "table table-bordered"}
+  %tr
+    %th{:colspan => "18", :float => "center"} IntegralMap
+    -for i in 0...integralmap.size
+      %tr
+      -for j in 0...integralmap[i].size
+        %td
+          =integralmap[i][j]
+          &nbsp
+%table{:class => "table table-bordered"}
+  %tr
+    %th{:colspan => "27", :float => "center"} IntegralMapRat
+    -for i in 0...integralmaprat.size
+      %tr
+      -for j in 0...integralmaprat[i].size
+        %td
+          =integralmaprat[i][j]
+          &nbsp
+%table{:class => "table table-bordered"}
+  %tr
+    %th{:colspan => "27", :float => "center"} UnregularInt
+    -for i in 1...unregularint.size
+      %tr
+      -for j in 0...unregularint[i].size
+        %td
+          =unregularint[i][j]
+          &nbsp
+%table{:class => "table table-bordered"}
+  %tr
+    %th{:colspan => "8", :float => "center"} IntSTT
+    %tr
+    -for j in 0...intstt.size
+      %td
+        =intstt[j]
+        &nbsp
+%table{:class => "table table-bordered"}
+  %tr
+    %th{:colspan => "8", :float => "center"} IntQRS
+    %tr
+    -for j in 0...intqrs.size
+      %td
+        =intqrs[j]
+        &nbsp
+%table{:class => "table table-bordered"}
+  %tr
+    %th{:colspan => "18", :float => "center"} IntegralPattern
+    %tr
+    -for j in 0...integralpattern.size
+      %td
+        =integralpattern[j]
+        &nbsp
+= link_to 'Назад', DigitalDatum.find(@integrals[0].digital_datum_id).examination, :class => 'btn'

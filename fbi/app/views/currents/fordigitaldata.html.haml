@@ -1,0 +1,44 @@
+- x=@currents.select{|x| x.file_name == "data"}[0].data.split("\r\n")
+- x.shift
+- x.shift
+- x.shift
+- tmp=0
+-x2=[]
+-y=[]
+-z=[]
+-examination=DigitalDatum.find(@currents[0].digital_datum_id).examination
+-check = Dir.entries(File.join(Rails.root,'graphics'))
+-full=0
+-for i in 0...check.size
+  -if check[i].scan("currents_for_patient_"+examination.id.to_s).size > 0
+    -full=1
+-for j in 0..30
+  -for k in 0..30
+    -x2<<j
+    -y<<k
+#table2
+  %table
+    -for i in 0..x.size do
+      %td
+        -if(x[i].to_i>0)
+          #tablered
+            =x[i]
+        -else
+          #tableblue
+            =x[i]
+        - z<<x[i]
+        - tmp+=1
+        -if tmp==31
+          %tr
+          - tmp=0
+-if full==0
+  -@graphic.svg1(x2,y,z,"currents_for_examination_"+examination.id.to_s,examination.id)
+%table
+  %th Рисунки
+  %td
+    = link_to image_tag(img1_current_path(@currents[0]), :size => "400x200", :alt => 'qq'), img1_current_path(@currents[0]), :class => 'btn'
+    = link_to image_tag(img2_current_path(@currents[0]), :size => "400x200", :alt => 'qq'), img2_current_path(@currents[0]), :class => 'btn'
+    = link_to image_tag(img3_current_path(@currents[0]), :size => "400x200", :alt => 'qq'), img3_current_path(@currents[0]), :class => 'btn'
+    -#= link_to "Рисунок #{tmp+2}", img2_current_path(@currents[0]), :class => 'btn'
+
+= link_to 'Назад', DigitalDatum.find(@currents[0].digital_datum_id).examination, :class => 'btn'

@@ -1,0 +1,40 @@
+%p
+  %b Номер карты:
+  = @patient.cart_name
+%p
+  %b Дата рождения:
+  =l @patient.date, format: :long
+%p
+  %b Архив обследования:
+  -if @patient.file?
+    = @patient.oname
+    -#= link_to 'Скачать', download_archive_patient_path, :class => 'btn'
+    = link_to 'Загрузить данные обследования на сервер', un_archive_patient_path(@patient), :class => 'btn'
+  -else
+    Нет архива
+
+-if @patient.examinations.size > 0
+
+  %h3 Обследования пациента:
+
+  %table{:class => "table table-striped"}
+    %tr
+      %th дата создания обследования
+      %th номер обследования
+      %th Действия
+
+    - @patient.examinations.each do |examination|
+      %tr
+        %td=l examination.created_at, format: :long
+        %td= examination.number
+        %td
+          = link_to 'Просмотр', examination, :class => 'btn'
+          = link_to 'Удалить', examination, :confirm => 'Are you sure?', :method => :delete, :class => 'btn'
+
+%br
+
+= link_to 'Редактировать', edit_patient_path(@patient), :class => 'btn'
+
+= link_to 'Добавить обследование', addarchive_patient_path(@patient), :class => 'btn'
+
+= link_to 'Назад', patients_path, :class => 'btn'

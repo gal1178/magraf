@@ -1,0 +1,13 @@
+= form_for @examination do |f|
+  - if @examination.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@examination.errors.count, "error")} prohibited this examination from being saved:"
+      %ul
+        - @examination.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :patient
+    = f.number_field :patient
+  .actions
+    = f.submit 'Save'

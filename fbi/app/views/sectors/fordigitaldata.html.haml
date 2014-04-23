@@ -1,0 +1,88 @@
+- rect_s0=@sectors.select{|x| x.file_name == "rect_s0"}[0].data
+- rect_s0=rect_s0.sub("#{rect_s0[0..18]}","").sub(" \r\n","").split("\t")
+- rect_s1=@sectors.select{|x| x.file_name == "rect_s1"}[0].data
+- rect_s1=rect_s1.sub("#{rect_s1[0..18]}","").sub(" \r\n","").split("\t")
+- rect_s2=@sectors.select{|x| x.file_name == "rect_s2"}[0].data
+- rect_s2=rect_s2.sub("#{rect_s2[0..18]}","").sub(" \r\n","").split("\t")
+- s0_dat=@sectors.select{|x| x.file_name == "s0_dat"}[0].data
+- s0_dat=s0_dat.sub("#{s0_dat[0..18]}","").sub(" \r\n","").split("\t")
+- s1_dat=@sectors.select{|x| x.file_name == "s1_dat"}[0].data
+- s1_dat=s1_dat.sub("#{s1_dat[0..18]}","").sub(" \r\n","").split("\t")
+- s01_dat=@sectors.select{|x| x.file_name == "s01_dat"}[0].data
+- s01_dat=s01_dat.sub("#{s01_dat[0..18]}","").sub(" \r\n","").split("\t")
+- s2_dat=@sectors.select{|x| x.file_name == "s2_dat"}[0].data
+- s2_dat=s2_dat.sub("#{s2_dat[0..18]}","").sub(" \r\n","").split("\t")
+%h4 Таблица данных обследования:
+#table1
+  %table{:class => "table table-bordered"}
+    %tr
+      %th rect_s0:
+      %th rect_s1:
+      %th rect_s2:
+      %th s0_dat:
+      %th s1_dat:
+      %th s01_dat:
+      %th s2_dat: &nbsp
+
+    -for i in 0...rect_s0.size
+      %tr
+        %td
+          =rect_s0[i]
+          %br
+        %td
+          =rect_s1[i]
+          %br
+        %td
+          =rect_s2[i]
+          %br
+        %td
+          =s0_dat[i]
+          %br
+        %td
+          =s1_dat[i]
+          %br
+        %td
+          =s01_dat[i]
+          %br
+        %td
+          =s2_dat[i]
+          %br
+
+    -#%tr
+    -#  %td
+    -#    -for i in 0..rect_s0.size
+    -#      =rect_s0[i]
+    -#      %br
+    -#  %td
+    -#    -for i in 0..rect_s1.size
+    -#      =rect_s1[i]
+    -#      %br
+    -#  %td
+    -#    -for i in 0..rect_s2.size
+    -#      =rect_s2[i]
+    -#      %br
+    -#  %td
+    -#    -for i in 0..s0_dat.size
+    -#      =s0_dat[i]
+    -#      %br
+    -#  %td
+    -#    -for i in 0..s1_dat.size
+    -#      =s1_dat[i]
+    -#      %br
+    -#  %td
+    -#    -for i in 0..s01_dat.size
+    -#      =s01_dat[i]
+    -#      %br
+    -#  %td
+    -#    -for i in 0..s2_dat.size
+    -#      =s2_dat[i]
+    -#      %br
+-#%table
+  %tr
+    %th Файлы
+    %th Рисунки
+    - @sectors.each do |sector|
+      %tr
+        %td
+          = link_to "#{sector.file_name}", sector, :class => 'btn'
+= link_to 'Назад', DigitalDatum.find(@sectors[0].digital_datum_id).examination, :class => 'btn'

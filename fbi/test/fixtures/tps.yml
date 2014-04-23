@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  vin: 1
+  number: MyString
+  id_human: 1
+  mark: MyString
+
+two:
+  vin: 1
+  number: MyString
+  id_human: 1
+  mark: MyString

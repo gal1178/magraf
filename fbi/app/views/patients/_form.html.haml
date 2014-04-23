@@ -1,0 +1,18 @@
+= form_for @patient do |f|
+  -if @patient.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@patient.errors.count, "error")} prohibited this patient from being saved:"
+      %ul
+        - @patient.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    Имя карты
+    %p
+    = f.text_field :cart_name
+  .field
+    Дата рождения
+    %p
+    = f.date_select :date,  {:class =>"dselect", :start_year => 1920, :end_year => Time.now.year, :include_blank => true, :use_month_names => ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"]}
+  .actions
+    = f.submit 'Сохранить'

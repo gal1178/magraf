@@ -1,0 +1,55 @@
+-temp=0
+- x=@localisations.select{|x| x.file_name == "x0l"}[0].data
+- x=x.sub("#{x[0..15]}","").split("\t")
+- y=@localisations.select{|x| x.file_name == "y0l"}[0].data
+- y=y.sub("#{y[0..15]}","").split("\t")
+- z=@localisations.select{|x| x.file_name == "z0l"}[0].data
+- z=z.sub("#{z[0..15]}","").split("\t")
+- dir=@localisations.select{|x| x.file_name == "direction"}[0].data
+- dir=dir.sub("#{dir[0..15]}","").split("\t")
+-xs=[]
+-ys=[]
+-zs=[]
+-examination=DigitalDatum.find(@localisations[0].digital_datum_id).examination
+-check = Dir.entries(File.join(Rails.root,'graphics'))
+-full=0
+-for i in 0...check.size
+  -if check[i].scan("localisation_for_patient_"+examination.id.to_s).size > 0
+    -full=1
+%div Локализация биомагнитного источника - это положение
+источника биомагнитного сигнала по отношению к плоскости измерений на выбранном интервале исследования кардиоцикла.
+%br
+
+.span6
+  = link_to 'сравнить таблицу с другим пациентом', equal_localisation_path(examination.patient_id, examination.id), :class => 'btn'
+  %table{:class => "table table-bordered"}
+    %tr
+      %th X
+      %th Y
+      %th Z
+      %th dir
+    - for i in 1...dir.size
+      %tr
+        %td
+          =x[i]
+          -xs<<x[i]
+        %td
+          =y[i]
+          -ys<<y[i]
+        %td
+          =z[i]
+          -zs<<z[i]
+        %td
+          =dir[i]
+.span6
+  %table
+    %td
+      = link_to image_tag(img1_localisation_path(@localisations[0]), :size => "600x300", :alt => 'qq'), img1_localisation_path(@localisations[0]), :class => 'btn'
+      %br
+      = link_to image_tag(img2_localisation_path(@localisations[0]), :size => "600x300", :alt => 'qq'), img2_localisation_path(@localisations[0]), :class => 'btn'
+      %br
+      = link_to image_tag(img3_localisation_path(@localisations[0]), :size => "600x300", :alt => 'qq'), img3_localisation_path(@localisations[0]), :class => 'btn'
+-if full==0
+  -@graphic.svg1(xs,ys,zs,"localisation_for_examination_"+examination.id.to_s,examination.id)
+
+=link_to 'Назад', examination, :class => 'btn'

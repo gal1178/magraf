@@ -1,0 +1,18 @@
+%table#login-box
+  %tbody
+    %tr
+      %td{:colspan => 2}
+        #headline-container 
+          МГИУ
+    %tr
+      %td#logo-container
+        =image_tag 'key.png'
+      %td#login-form-container
+        =form_tag(sessions_path, class: 'form-horizontal') do
+          .control-group
+            =label_tag :email,User.human_attribute_name(:email),class: 'control-label'
+            .controls=email_field_tag :email,params[:email], placeholder: "mail@example.com"
+            =label_tag :password,User.human_attribute_name(:password),class: 'control-label'
+            .controls=password_field_tag :password
+          .actions
+            =submit_tag "Войти"

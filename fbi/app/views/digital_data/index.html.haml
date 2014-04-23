@@ -1,0 +1,19 @@
+%h1 Listing digital_data
+
+%table
+  %tr
+    %th Filename
+    %th
+    %th
+    %th
+
+  - @digital_data.each do |digital_datum|
+    %tr
+      %td= digital_datum.filename
+      %td= link_to 'Show', digital_datum
+      %td= link_to 'Edit', edit_digital_datum_path(digital_datum)
+      %td= link_to 'Destroy', digital_datum, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Digital datum', new_digital_datum_path

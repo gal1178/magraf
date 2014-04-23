@@ -1,0 +1,17 @@
+%h1 Listing integrals
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @integrals.each do |integral|
+    %tr
+      %td= link_to 'Show', integral
+      %td= link_to 'Edit', edit_integral_path(integral)
+      %td= link_to 'Destroy', integral, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Integral', new_integral_path

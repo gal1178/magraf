@@ -1,0 +1,10 @@
+= form_for @integral do |f|
+  - if @integral.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@integral.errors.count, "error")} prohibited this integral from being saved:"
+      %ul
+        - @integral.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

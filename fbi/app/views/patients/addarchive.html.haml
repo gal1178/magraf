@@ -1,0 +1,10 @@
+%b Архив обследования:
+-if @patient.file?
+  = @patient.oname
+= form_for @patient do |f|
+  = f.file_field :archive, :accept => '.zip'
+  = f.submit "Загрузить"
+
+= link_to 'Просмотр', @patient, :class => 'btn'
+
+= link_to 'Назад', patients_path, :class => 'btn'

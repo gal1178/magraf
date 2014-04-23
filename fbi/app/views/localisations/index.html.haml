@@ -1,0 +1,16 @@
+%table{:class => "table table-striped"}
+  %tr
+    %th  Название файла
+    %th  Действия
+
+  - @localisations.each do |localisation|
+    %tr
+      %td= localisation.file_name
+      %td
+        = link_to 'Show', localisation, :class => 'btn'
+        = link_to 'Edit', edit_localisation_path(localisation), :class => 'btn btn-primary'
+        = link_to 'Destroy', localisation, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger'
+
+%br
+
+= link_to 'New Localisation', new_localisation_path, :class => 'btn'

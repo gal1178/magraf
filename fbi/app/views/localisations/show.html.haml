@@ -1,0 +1,10 @@
+%p
+  %b Название файла:
+  = @localisation.file_name
+%p
+  %b содержимое файла:
+  = @localisation.data
+
+= link_to 'Edit', edit_localisation_path(@localisation)
+\|
+= link_to 'Back', localisations_path

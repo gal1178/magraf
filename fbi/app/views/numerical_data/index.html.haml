@@ -1,0 +1,19 @@
+%h1 Listing numerical_data
+
+%table
+  %tr
+    %th Filename
+    %th
+    %th
+    %th
+
+  - @numerical_data.each do |numerical_datum|
+    %tr
+      %td= numerical_datum.filename
+      %td= link_to 'Show', numerical_datum
+      %td= link_to 'Edit', edit_numerical_datum_path(numerical_datum)
+      %td= link_to 'Destroy', numerical_datum, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Numerical datum', new_numerical_datum_path

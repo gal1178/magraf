@@ -1,0 +1,19 @@
+%h1 Listing examinations
+
+%table
+  %tr
+    %th Patient
+    %th
+    %th
+    %th
+
+  - @examinations.each do |examination|
+    %tr
+      %td= examination.patient
+      %td= link_to 'Show', examination
+      %td= link_to 'Edit', edit_examination_path(examination)
+      %td= link_to 'Destroy', examination, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Examination', new_examination_path

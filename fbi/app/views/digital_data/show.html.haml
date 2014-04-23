@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Filename:
+  = @digital_datum.filename
+
+= link_to 'Edit', edit_digital_datum_path(@digital_datum)
+\|
+= link_to 'Back', digital_data_path

@@ -1,0 +1,13 @@
+-#=@usr1.inspect
+- examination_array = @usr1.map { |examination| [examination.created_at] }
+.span9
+  .field
+    Выберите дату прохождения обследования
+    %br
+    =select(Examination, :Examination_id, examination_array)
+    #equal
+:javascript
+  $("#Examination_Examination_id").change(function(){
+    //alert($(this).val());
+    $("#equal").load("/localisations/3/fordigitaldata");
+  });

@@ -1,0 +1,10 @@
+%p
+  %b Имя пользователя:
+  = @user.username
+%p
+  %b Email
+  = @user.email
+
+= link_to 'Редактировать', edit_user_path(@user), :class => 'btn btn-primary'
+%b
+= link_to 'Назад', users_path, :class => 'btn'

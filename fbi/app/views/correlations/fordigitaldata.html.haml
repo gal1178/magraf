@@ -1,0 +1,189 @@
+- cor_cor=@correlations.select{|x| x.file_name == "cor_cor"}[0].data
+- cor_cor=cor_cor.sub("#{cor_cor[0..18]}","").sub(" \r\n","").split("\t")
+- cor_dir=@correlations.select{|x| x.file_name == "cor_dir"}[0].data
+- cor_dir=cor_dir.sub("#{cor_dir[0..18]}","").sub(" \r\n","").split("\t")
+- cor_dir_changes=@correlations.select{|x| x.file_name == "cor_dir_changes"}[0].data
+- cor_dir_changes=cor_dir_changes.sub("#{cor_dir_changes[0..18]}","").sub(" \r\n","").split("\t")
+- cor_max=@correlations.select{|x| x.file_name == "cor_max"}[0].data
+- cor_max=cor_max.sub("#{cor_max[0..18]}","").sub(" \r\n","").split("\t")
+- cor_ps0=@correlations.select{|x| x.file_name == "cor_ps0"}[0].data
+- cor_ps0=cor_ps0.sub("#{cor_ps0[0..18]}","").sub(" \r\n","").split("\t")
+- cor_ps1=@correlations.select{|x| x.file_name == "cor_ps1"}[0].data
+- cor_ps1=cor_ps1.sub("#{cor_ps1[0..18]}","").sub(" \r\n","").split("\t")
+- cor_ps2=@correlations.select{|x| x.file_name == "cor_ps2"}[0].data
+- cor_ps2=cor_ps2.sub("#{cor_ps2[0..18]}","").sub(" \r\n","").split("\t")
+- cor_ps3=@correlations.select{|x| x.file_name == "cor_ps3"}[0].data
+- cor_ps3=cor_ps3.sub("#{cor_ps3[0..18]}","").sub(" \r\n","").split("\t")
+- correl=@correlations.select{|x| x.file_name == "correl"}[0].data
+- correl=correl.sub("#{correl[0..18]}","").sub("\r\n","").split("\t")
+- cor_s0=@correlations.select{|x| x.file_name == "cor_s0"}[0].data
+- cor_s0=cor_s0.sub("#{cor_s0[0..18]}","").sub(" \r\n","").split("\t")
+- cor_s00=@correlations.select{|x| x.file_name == "cor_s00"}[0].data
+- cor_s00=cor_s00.sub("#{cor_s00[0..18]}","").sub(" \r\n","").split("\t")
+- cor_s1=@correlations.select{|x| x.file_name == "cor_s1"}[0].data
+- cor_s1=cor_s1.sub("#{cor_s1[0..18]}","").sub(" \r\n","").split("\t")
+- cor_s01=@correlations.select{|x| x.file_name == "cor_s01"}[0].data
+- cor_s01=cor_s01.sub("#{cor_s01[0..18]}","").sub(" \r\n","").split("\t")
+- cor_s2=@correlations.select{|x| x.file_name == "cor_s2"}[0].data
+- cor_s2=cor_s2.sub("#{cor_s2[0..18]}","").sub(" \r\n","").split("\t")
+- cor_s10=@correlations.select{|x| x.file_name == "cor_s10"}[0].data
+- cor_s10=cor_s10.sub("#{cor_s10[0..18]}","").sub(" \r\n","").split("\t")
+- cor_s11=@correlations.select{|x| x.file_name == "cor_s11"}[0].data
+- cor_s11=cor_s11.sub("#{cor_s11[0..18]}","").sub(" \r\n","").split("\t")
+- cor_x0l=@correlations.select{|x| x.file_name == "cor_x0l"}[0].data
+- cor_x0l=cor_x0l.sub("#{cor_x0l[0..18]}","").sub(" \r\n","").split("\t")
+- cor_y0l=@correlations.select{|x| x.file_name == "cor_y0l"}[0].data
+- cor_y0l=cor_y0l.sub("#{cor_y0l[0..18]}","").sub(" \r\n","").split("\t")
+- cor_z0l=@correlations.select{|x| x.file_name == "cor_z0l"}[0].data
+- cor_z0l=cor_z0l.sub("#{cor_z0l[0..18]}","").sub(" \r\n","").split("\t")
+- rec_cor0=@correlations.select{|x| x.file_name == "rec_cor0"}[0].data
+- rec_cor0=rec_cor0.sub("#{rec_cor0[0..18]}","").sub(" \r\n","").split("\t")
+- rec_cor1=@correlations.select{|x| x.file_name == "rec_cor1"}[0].data
+- rec_cor1=rec_cor1.sub("#{rec_cor1[0..18]}","").sub(" \r\n","").split("\t")
+- rec_cor2=@correlations.select{|x| x.file_name == "rec_cor2"}[0].data
+- rec_cor2=rec_cor2.sub("#{rec_cor2[0..18]}","").sub(" \r\n","").split("\t")
+
+%h4 Таблица данных обследования:
+#table1
+  %table{:class => "table table-bordered"}
+    %tr
+      %th cor_cor: &nbsp
+      -for i in 0...cor_cor.size
+        %td
+          =cor_cor[i]
+          &nbsp
+      %tr
+      %th cor_dir: &nbsp
+      -for i in 0...cor_dir.size
+        %td
+          =cor_dir[i]
+          &nbsp
+      %tr
+      %th cor_dir_changes: &nbsp
+      -for i in 0...cor_dir_changes.size
+        %td
+          =cor_dir_changes[i]
+          &nbsp
+      %tr
+      %th cor_max: &nbsp
+      -for i in 0...cor_max.size
+        %td
+          =cor_max[i]
+          &nbsp
+      %tr
+      %th cor_ps0: &nbsp
+      -for i in 0...cor_ps0.size
+        %td
+          =cor_ps0[i]
+          &nbsp
+      %tr
+      %th cor_ps1: &nbsp
+      -for i in 0...cor_ps1.size
+        %td
+          =cor_ps1[i]
+          &nbsp
+      %tr
+      %th cor_ps2: &nbsp
+      -for i in 0...cor_ps2.size
+        %td
+          =cor_ps2[i]
+          &nbsp
+      %tr
+      %th cor_ps3: &nbsp
+      -for i in 0...cor_ps3.size
+        %td
+          =cor_ps3[i]
+          &nbsp
+      %tr
+      %th correl: &nbsp
+      -#-for i in 0..correl.size
+        %td
+          =correl[i]
+          &nbsp
+      %tr
+      %th cor_s0: &nbsp
+      -for i in 0...cor_s0.size
+        %td
+          =cor_s0[i]
+          &nbsp
+      %tr
+      %th cor_s00: &nbsp
+      -for i in 0...cor_s00.size
+        %td
+          =cor_s00[i]
+          &nbsp
+      %tr
+      %th cor_s1: &nbsp
+      -for i in 0...cor_s1.size
+        %td
+          =cor_s1[i]
+          &nbsp
+      %tr
+      %th cor_s01: &nbsp
+      -for i in 0...cor_s01.size
+        %td
+          =cor_s01[i]
+          &nbsp
+      %tr
+      %th cor_s2: &nbsp
+      -for i in 0...cor_s2.size
+        %td
+          =cor_s2[i]
+          &nbsp
+      %tr
+      %th cor_s10: &nbsp
+      -for i in 0...cor_s10.size
+        %td
+          =cor_s10[i]
+          &nbsp
+      %tr
+      %th cor_s11: &nbsp
+      -for i in 0...cor_s11.size
+        %td
+          =cor_s11[i]
+          &nbsp
+      %tr
+      %th cor_x0l: &nbsp
+      -for i in 0...cor_x0l.size
+        %td
+          =cor_x0l[i]
+          &nbsp
+      %tr
+      %th cor_y0l: &nbsp
+      -for i in 0...cor_y0l.size
+        %td
+          =cor_y0l[i]
+          &nbsp
+      %tr
+      %th cor_z0l: &nbsp
+      -for i in 0...cor_z0l.size
+        %td
+          =cor_z0l[i]
+          &nbsp
+      %tr
+      %th rec_cor0: &nbsp
+      -for i in 0...rec_cor0.size
+        %td
+          =rec_cor0[i]
+          &nbsp
+      %tr
+      %th rec_cor1: &nbsp
+      -for i in 0...rec_cor1.size
+        %td
+          =rec_cor1[i]
+          &nbsp
+      %tr
+      %th rec_cor2: &nbsp
+      -for i in 0...rec_cor2.size
+        %td
+          =rec_cor2[i]
+          &nbsp
+-#%table
+  %tr
+    %th Файлы
+    %th Рисунки
+    - @correlations.each do |correlation|
+      %tr
+        %td
+          = link_to "#{correlation.file_name}", correlation, :class => 'btn'
+= link_to 'Назад', DigitalDatum.find(@correlations[0].digital_datum_id).examination, :class => 'btn'

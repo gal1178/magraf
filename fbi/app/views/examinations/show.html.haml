@@ -1,0 +1,36 @@
+.span3
+  %h3 Данные пациента:
+  %p
+    %b Имя карты:
+    = @examination.patient.cart_name
+
+  %p
+    %b Дата рождения:
+    =l @examination.patient.date, format: :long
+    -#=show_url("http://www.msiu.ru/")
+
+.span12
+  %h3 Данные обследования:
+  %table{:class => "table table-striped"}
+    %tr
+      %td= link_to 'Локализация биомагнитного источника', fordigitaldata_localisation_path(@examination.digital_data[0]), :class => 'btn'
+    %tr
+      %td= link_to 'Токи', fordigitaldata_current_path(@examination.digital_data[0]), :class => 'btn'
+    %tr
+      %td= link_to 'Интегралы', fordigitaldata_integral_path(@examination.digital_data[0]), :class => 'btn'
+    %tr
+      %td= link_to 'Корреляция', fordigitaldata_correlation_path(@examination.digital_data[0]), :class => 'btn'
+    %tr
+      %td= link_to 'Секторы', fordigitaldata_sector_path(@examination.digital_data[0]), :class => 'btn'
+    %tr
+      %td= link_to 'Глобал', fordigitaldata_global_path(@examination.digital_data[0]), :class => 'btn'
+
+.span15
+  %h3 Комментарий:
+  %table{:class => "table table-striped"}
+    %tr
+      %td=@examination.comment
+  %br
+  =link_to 'Добавить комментарий', comment_examination_path, :class => 'btn'
+
+.span18= link_to 'Назад', @examination.patient, :class => 'btn'

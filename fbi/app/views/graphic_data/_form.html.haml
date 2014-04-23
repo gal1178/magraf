@@ -1,0 +1,13 @@
+= form_for @graphic_datum do |f|
+  - if @graphic_datum.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@graphic_datum.errors.count, "error")} prohibited this graphic_datum from being saved:"
+      %ul
+        - @graphic_datum.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :filename
+    = f.text_field :filename
+  .actions
+    = f.submit 'Save'

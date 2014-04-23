@@ -1,0 +1,21 @@
+%table{:class => "table table-striped"}
+  %tr
+    %th Номер карты
+    %th Дата рождения
+    %th Действия
+    %th Количество обследований
+
+  - @patients.each do |patient|
+    %tr
+      %td= patient.cart_name
+      %td=l patient.date, format: :long
+      %td
+        = link_to 'Просмотр', patient, :class => 'btn'
+        = link_to 'Редактировать', edit_patient_path(patient), :class => 'btn'
+        = link_to 'Добавить обследование', addarchive_patient_path(patient), :class => 'btn'
+        = link_to 'Удалить', patient, :confirm => 'Are you sure?', :method => :delete, :class => 'btn'
+      %td
+        = patient.examinations.size
+%br
+
+= link_to 'Новый пациент', new_patient_path, :class => 'btn'

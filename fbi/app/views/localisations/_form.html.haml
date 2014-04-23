@@ -1,0 +1,10 @@
+= form_for @localisation do |f|
+  - if @localisation.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@localisation.errors.count, "error")} prohibited this localisation from being saved:"
+      %ul
+        - @localisation.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

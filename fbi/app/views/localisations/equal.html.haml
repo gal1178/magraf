@@ -1,0 +1,52 @@
+- patient_array = Patient.all.map { |patient| [patient.cart_name, patient.id] }
+-#=@usr1.inspect
+.span1
+  - x=@localisations.select{|x| x.file_name == "x0l"}[0].data
+  - x=x.sub("#{x[0..15]}","").split("\t")
+  - y=@localisations.select{|x| x.file_name == "y0l"}[0].data
+  - y=y.sub("#{y[0..15]}","").split("\t")
+  - z=@localisations.select{|x| x.file_name == "z0l"}[0].data
+  - z=z.sub("#{z[0..15]}","").split("\t")
+  - dir=@localisations.select{|x| x.file_name == "direction"}[0].data
+  - dir=dir.sub("#{dir[0..15]}","").split("\t")
+  %div Таблица пациента.
+
+  %table{:class => "table table-bordered"}
+    %tr
+      %th X
+      %th Y
+      %th Z
+      %th dir
+    - for i in 1...dir.size
+      %tr
+        %td
+          =x[i]
+        %td
+          =y[i]
+        %td
+          =z[i]
+        %td
+          =dir[i]
+.span9
+  = form_for @usr1 do |f|
+    .field
+      Выберите номер карты пациента для сравнения
+      %br
+      =f.select(:cart_name, patient_array)
+      %p{:id=>"par1"}
+        тут будет  загружена таблица
+      %input{:id=>"equal", :type => "button", :value=>"сравнить"}
+    .actions
+      =f.submit 'Сравнить'
+:javascript
+  //$("#patient_cart_name").change(function(){
+  //  //alert($(this).val());
+  //  $("#equal").load("/localisations/15/equal2?id2=" + $(this).val() + "");
+  //});
+  $("#equal").ready(function(){
+
+     $("#equal").click(function(){
+        $("#par1").load("/localisations/14/fordigitaldata");
+     })
+
+  });

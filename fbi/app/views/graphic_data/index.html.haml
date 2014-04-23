@@ -1,0 +1,19 @@
+%h1 Listing graphic_data
+
+%table
+  %tr
+    %th Filename
+    %th
+    %th
+    %th
+
+  - @graphic_data.each do |graphic_datum|
+    %tr
+      %td= graphic_datum.filename
+      %td= link_to 'Show', graphic_datum
+      %td= link_to 'Edit', edit_graphic_datum_path(graphic_datum)
+      %td= link_to 'Destroy', graphic_datum, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Graphic datum', new_graphic_datum_path
